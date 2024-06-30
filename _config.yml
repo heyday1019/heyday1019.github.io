@@ -290,6 +290,14 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
+jekyll-archives: # 2024..6.30 add ===
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/ # end add ===
 # jekyll-archives:
 #   enabled:
 #     - categories
@@ -306,6 +314,10 @@ tag_archive:
 # - https://jch.penibelst.de/
 compress_html:
   clippings: all
+  comments: all # 2024.06.30 add ===
+  endings: all
+  profile: false
+  blanklines: false # end add ===
   ignore:
     envs: development
 
@@ -321,5 +333,6 @@ defaults:
       author_profile: true
       read_time: true
       comments: # true
+      toc: true # 2024.06.30-add
       share: true
       related: true
