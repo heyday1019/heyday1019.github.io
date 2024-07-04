@@ -21,7 +21,7 @@ title                    : "Dev_Master"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Nick Jeong"
-description              : "새로운 도전은 늘 가슴을 뛰게 합니다."
+description              : "새로운 도전은 늘 가슴을 뛰게 한다!"
 url                      : "https://heyday1019.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
