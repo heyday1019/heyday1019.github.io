@@ -1,0 +1,264 @@
+---
+layout: null
+sitemap: true
+---
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조선타로 · 오늘의 타로 무료 리딩 | Joseon Tarot</title>
+<meta name="description" content="조선의 인물과 상징으로 다시 그린 78장 한국풍 타로. 오늘의 카드와 과거·현재·미래 3장 리딩을 무료로 뽑아보세요.">
+<link rel="canonical" href="https://heyday1019.github.io/k-tarot/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="조선타로 · 오늘의 카드 한 장">
+<meta property="og:description" content="광대는 탈춤꾼으로, 악마는 도깨비로, 죽음은 저승사자로. 조선풍 타로로 오늘의 메시지를 받아보세요.">
+<meta property="og:image" content="https://heyday1019.github.io/k-tarot/og.jpg">
+<meta property="og:url" content="https://heyday1019.github.io/k-tarot/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"조선타로 Joseon Tarot","url":"https://heyday1019.github.io/k-tarot/","applicationCategory":"LifestyleApplication","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"description":"조선풍 78장 타로 카드로 보는 무료 오늘의 타로와 3장 리딩"}
+</script>
+<style>
+:root{
+  --navy:#162048; --navy-2:#1d2a5c; --ink:#f3ecdc; --muted:#c9c0ab; --gold:#d4af5a; --gold-2:#f0d48e;
+  --red:#b2342a; --green:#247054; --card-r:12px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 50% -10%, #263578 0%, var(--navy) 55%) fixed, var(--navy);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-2)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.hero{text-align:center;padding:56px 0 20px}
+.band{height:10px;background:repeating-linear-gradient(90deg,var(--red) 0 22px,var(--green) 22px 44px,#28468c 44px 66px,var(--gold) 66px 88px,#f0ece0 88px 110px);opacity:.9}
+h1{font-family:"Gowun Batang",serif;font-weight:700;color:var(--gold);font-size:clamp(34px,7vw,56px);margin:14px 0 4px;letter-spacing:.02em}
+.sub{color:var(--muted);margin:0 0 6px}
+.lead{max-width:620px;margin:10px auto 0;color:var(--ink);opacity:.92}
+.modes{display:flex;gap:8px;justify-content:center;margin:26px 0 8px;flex-wrap:wrap}
+.modes button{background:transparent;color:var(--ink);border:1px solid rgba(212,175,90,.55);padding:9px 16px;border-radius:999px;font:inherit;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700}
+.q{display:flex;justify-content:center;margin:10px 0 0}
+.q input{width:min(520px,100%);background:rgba(255,255,255,.06);border:1px solid rgba(212,175,90,.35);color:var(--ink);padding:11px 14px;border-radius:10px;font:inherit}
+.q input::placeholder{color:#9d97a8}
+.table{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);margin:28px 0 8px;min-height:300px;flex-wrap:wrap}
+.slot{display:flex;flex-direction:column;align-items:center;gap:8px}
+.slot .pos{font-size:13px;color:var(--gold-2);letter-spacing:.08em}
+.card{width:clamp(140px,26vw,220px);aspect-ratio:480/715;perspective:1200px;cursor:pointer;border:0;padding:0;background:none}
+.card .inner{position:relative;width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.card.flipped .inner{transform:rotateY(180deg)}
+.card .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--card-r);overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.card .face img{width:100%;height:100%;object-fit:cover;display:block}
+.card .front{transform:rotateY(180deg)}
+.card .front.rev img{transform:rotate(180deg)}
+.card:not(.flipped):hover .inner{transform:translateY(-6px)}
+.card:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:var(--card-r)}
+.hint{text-align:center;color:var(--muted);font-size:14px;min-height:22px}
+.actions{display:flex;gap:10px;justify-content:center;margin:12px 0 0;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(212,175,90,.55);font-weight:500}
+.reading{margin:30px auto 0;max-width:760px;display:none}
+.reading.show{display:block}
+.rcard{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,90,.25);border-radius:16px;padding:20px 20px 16px;margin:0 0 14px}
+.rcard h3{margin:0;font-family:"Gowun Batang",serif;color:var(--gold);font-size:22px}
+.rcard .meta{color:var(--muted);font-size:13px;margin:2px 0 10px}
+.rcard .msg{font-family:"Gowun Batang",serif;font-size:18px;line-height:1.6;margin:0 0 12px;color:var(--gold-2)}
+.rcard dl{display:grid;grid-template-columns:72px 1fr;gap:6px 12px;margin:0}
+.rcard dt{color:var(--gold);font-weight:700;font-size:14px}
+.rcard dd{margin:0;font-size:15px}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid rgba(212,175,90,.5);color:var(--gold-2);margin-left:6px;vertical-align:middle}
+section.shop{margin:56px auto 0;background:linear-gradient(180deg,rgba(212,175,90,.12),rgba(212,175,90,.04));border:1px solid rgba(212,175,90,.35);border-radius:20px;padding:28px 22px;display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:center}
+.shop h2{font-family:"Gowun Batang",serif;color:var(--gold);margin:0 0 8px;font-size:clamp(22px,4vw,30px)}
+.shop ul{margin:10px 0 16px;padding-left:18px}
+.shop img{width:100%;max-width:320px;justify-self:center;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.price{font-size:14px;color:var(--muted)}
+.price b{font-size:22px;color:var(--ink)}
+.stores{display:flex;flex-wrap:wrap;gap:8px}
+section.gallery{margin:56px 0 0}
+.gallery h2{font-family:"Gowun Batang",serif;color:var(--gold);text-align:center;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.grid figure{margin:0;text-align:center}
+.grid img{width:100%;border-radius:8px;display:block;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.grid figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+footer{color:#8f8aa0;font-size:13px;text-align:center;padding:48px 16px 40px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--gold);color:var(--navy);padding:10px 16px;border-radius:10px;font-weight:700;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:720px){section.shop{grid-template-columns:1fr}.table{min-height:0}.card{width:min(42vw,200px)}.modes button{padding:8px 12px}}
+@media (prefers-reduced-motion:reduce){.card .inner{transition:none}}
+</style>
+</head>
+<body>
+<div class="band" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="hero">
+    <p class="sub">JOSEON TAROT · 한국풍 78장 타로</p>
+    <h1>조선타로</h1>
+    <p class="lead">광대는 장터의 탈춤꾼으로, 악마는 도깨비로, 죽음은 저승사자로. 조선의 인물과 상징으로 다시 그린 타로가 오늘의 메시지를 건넵니다.</p>
+    <div class="modes" role="group" aria-label="리딩 종류">
+      <button type="button" data-mode="one" aria-pressed="true">오늘의 카드 1장</button>
+      <button type="button" data-mode="three" aria-pressed="false">과거 · 현재 · 미래</button>
+      <button type="button" data-mode="choice" aria-pressed="false">상황 · 장애물 · 조언</button>
+    </div>
+    <div class="q"><input id="question" maxlength="80" placeholder="마음속 질문을 떠올리거나 적어보세요 (선택)"></div>
+  </header>
+
+  <div class="table" id="table" aria-live="polite"></div>
+  <p class="hint" id="hint">카드를 눌러 뒤집어 보세요</p>
+  <div class="actions">
+    <button class="btn ghost" id="reshuffle" type="button">↻ 다시 섞기</button>
+    <button class="btn ghost" id="share" type="button">공유하기</button>
+  </div>
+
+  <div class="reading" id="reading"></div>
+
+  <section class="shop" id="shop">
+    <div>
+      <h2>조선타로 78장을 내 손에</h2>
+      <p>집에서 인쇄해 바로 쓰는 <b>프린트&amp;컷 덱</b>과, 카드마다 그림 속 상징까지 풀어낸 <b>87쪽 해설서</b>를 함께 드려요.</p>
+      <ul>
+        <li>78장 카드 인쇄용 PDF (A4 / US Letter, 재단선 포함)</li>
+        <li>인쇄소 제출용 고해상도 이미지 + 3mm 블리드</li>
+        <li>역방향 리딩이 가능한 180° 대칭 뒷면</li>
+        <li>한국어 해설서 PDF (영문 키워드 병기) · 스프레드 4종</li>
+        <li>메이저 아르카나 22장 폰 배경화면</li>
+      </ul>
+      <p class="price" id="price"></p>
+      <div class="stores" id="stores"></div>
+    </div>
+    <img src="img/major-17-star.webp" alt="조선타로 별 카드 - 달빛 연못가에서 물을 붓는 여인" loading="lazy">
+  </section>
+
+  <section class="gallery">
+    <h2>메이저 아르카나 22장</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+</div>
+<footer>
+  © 조선타로 Joseon Tarot · 일러스트는 제작자가 기획·디렉팅하고 AI 도구로 제작했습니다.<br>
+  타로 리딩은 자기 성찰과 재미를 위한 것이며 전문적인 조언을 대신하지 않습니다.
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* 판매 링크: 스토어에 상품을 올린 뒤 URL만 채우면 버튼이 나타납니다. 비어 있으면 숨김. */
+const STORE = {
+  price: "14,900원",
+  links: [
+    { label: "크몽에서 구매", url: "" },
+    { label: "스마트스토어에서 구매", url: "" },
+    { label: "Etsy (Global)", url: "" },
+    { label: "실물 카드 출시 알림 받기", url: "" }
+  ]
+};
+
+const POS = {
+  one: ["오늘의 카드"],
+  three: ["과거", "현재", "미래"],
+  choice: ["상황", "장애물", "조언"]
+};
+const $ = s => document.querySelector(s);
+let CARDS = [], mode = "one", draw = [];
+
+function storage(fn, fallback) { try { return fn(); } catch (e) { return fallback; } }
+function todayKey() { const d = new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+
+function shuffleDraw(n) {
+  const idx = CARDS.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+  return idx.slice(0, n).map(i => ({ i, rev: Math.random() < 0.3 }));
+}
+
+function deal(fresh) {
+  const n = POS[mode].length;
+  draw = null;
+  if (mode === "one" && !fresh) {
+    const saved = storage(() => JSON.parse(localStorage.getItem("jt-daily") || "null"), null);
+    if (saved && saved.day === todayKey()) draw = saved.draw;
+  }
+  if (!draw) draw = shuffleDraw(n);
+  if (mode === "one") storage(() => localStorage.setItem("jt-daily", JSON.stringify({ day: todayKey(), draw })));
+  const t = $("#table");
+  t.innerHTML = "";
+  draw.forEach((d, k) => {
+    const c = CARDS[d.i];
+    const slot = document.createElement("div");
+    slot.className = "slot";
+    slot.innerHTML = `<span class="pos">${POS[mode][k]}</span>
+      <button class="card" type="button" aria-label="${POS[mode][k]} 카드 뒤집기">
+        <div class="inner">
+          <div class="face back"><img src="img/back.webp" alt="카드 뒷면"></div>
+          <div class="face front ${d.rev ? "rev" : ""}"><img src="img/${c.slug}.webp" alt="${c.kr} (${c.en})" loading="lazy"></div>
+        </div>
+      </button>`;
+    slot.querySelector(".card").addEventListener("click", e => flip(e.currentTarget));
+    t.appendChild(slot);
+  });
+  $("#reading").classList.remove("show");
+  $("#reading").innerHTML = "";
+  $("#hint").textContent = n > 1 ? "왼쪽부터 한 장씩 눌러 뒤집어 보세요" : "카드를 눌러 뒤집어 보세요";
+}
+
+function flip(el) {
+  if (el.classList.contains("flipped")) return;
+  el.classList.add("flipped");
+  const all = [...document.querySelectorAll(".card")];
+  if (all.every(x => x.classList.contains("flipped"))) setTimeout(renderReading, 650);
+}
+
+function renderReading() {
+  const q = $("#question").value.trim();
+  const html = draw.map((d, k) => {
+    const c = CARDS[d.i];
+    const body = d.rev ? c.rev : c.up;
+    return `<article class="rcard">
+      <h3>${POS[mode][k]} · ${c.kr}<span class="tag">${d.rev ? "역방향" : "정방향"}</span></h3>
+      <p class="meta">${c.en} · ${d.rev ? c.rkw : c.kw}</p>
+      <p class="msg">“${c.msg}”</p>
+      <dl><dt>해석</dt><dd>${body}</dd><dt>연애</dt><dd>${c.love}</dd><dt>일·재물</dt><dd>${c.work}</dd></dl>
+    </article>`;
+  }).join("");
+  const r = $("#reading");
+  r.innerHTML = (q ? `<p class="hint">질문: “${q.replace(/[<>&]/g, "")}”</p>` : "") + html +
+    `<p class="hint">카드에 담긴 조선의 상징 해설은 <a href="#shop">조선타로 해설서</a>에서 볼 수 있어요.</p>`;
+  r.classList.add("show");
+  $("#hint").textContent = "";
+  r.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("on"); setTimeout(() => t.classList.remove("on"), 1800); }
+
+async function share() {
+  const names = draw.map(d => CARDS[d.i].kr + (d.rev ? "(역)" : "")).join(", ");
+  const text = `조선타로에서 뽑은 나의 카드: ${names} 🎴 너도 오늘의 카드 뽑아봐`;
+  const url = location.origin + location.pathname;
+  if (navigator.share) { try { await navigator.share({ title: "조선타로", text, url }); return; } catch (e) { return; } }
+  try { await navigator.clipboard.writeText(text + "\n" + url); toast("링크를 복사했어요"); } catch (e) { toast(url); }
+}
+
+function setupShop() {
+  $("#price").innerHTML = STORE.price ? `디지털 패키지 <b>${STORE.price}</b>` : "";
+  const live = STORE.links.filter(l => l.url);
+  $("#stores").innerHTML = live.length
+    ? live.map((l, k) => `<a class="btn ${k ? "ghost" : ""}" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("")
+    : `<span class="price">곧 판매를 시작합니다.</span>`;
+}
+
+document.querySelectorAll(".modes button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".modes button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  mode = b.dataset.mode; deal(true);
+}));
+$("#reshuffle").addEventListener("click", () => deal(true));
+$("#share").addEventListener("click", share);
+
+fetch("cards.json").then(r => r.json()).then(data => {
+  CARDS = data;
+  $("#grid").innerHTML = CARDS.filter(c => c.suit === "major").map(c =>
+    `<figure><img src="img/${c.slug}.webp" alt="${c.kr} (${c.en})" loading="lazy"><figcaption>${c.kr}</figcaption></figure>`).join("");
+  setupShop();
+  deal(false);
+});
+</script>
+</body>
+</html>
